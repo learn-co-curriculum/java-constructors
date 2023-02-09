@@ -43,13 +43,24 @@ The default constructor for `Dog` initializes instance variables to default valu
 based on their data type:
 
 ```java
+public class Dog {
 
-// Constructor
-public Dog() {
-    this.name = null;
-    this.breed = null;
-    this.age = 0;
-    this.waggingTail = false;
+    // Instance Variables
+    private String name;
+    private String breed;
+    private int age;
+    private boolean waggingTail;
+
+    // Constructor
+    public Dog() {
+        this.name = null;
+        this.breed = null;
+        this.age = 0;
+        this.waggingTail = false;
+    }
+
+    // Other methods
+    ...
 }
 ```
 
@@ -277,27 +288,25 @@ public class Cat {
 We have some code duplication between the two constructors, specifically the
 two statements that assign `name` and `age`.  We can do something
 called *constructor chaining*, where one constructor calls another to initialize
-some variables.
+the variables.
 
-We can have the constructor that takes four parameters call the
-constructor that only takes two parameters to do the `name` and `age`
-initialization.  This must be done as the first line of code in the
-constructor body and the method name `this` is used to call the
-constructor, i.e.  `this(name, age);`.
+We can have the constructor that takes two parameters (Constructor #2) call the
+constructor that takes four parameters (Constructor #1).  This must be done as
+the *first line of code* in the constructor body and the method name `this`
+is used to call the constructor, i.e.  `this(name, "unknown", age, false);`.
 
 ```java
 // Constructor #1
-public Dog(String name, int age) {
+public Dog(String name, String breed, int age, boolean waggingTail) {
     this.name = name;
+    this.breed = breed;
     this.age = age;
-    this.breed = "unknown";
+    this.waggingTail = waggingTail;
 }
 
 // Constructor #2
-public Dog(String name, String breed, int age, boolean waggingTail) {
-    this(name, age);  // calls Constructor #1
-    this.breed = breed;
-    this.waggingTail = waggingTail;
+public Dog(String name, int age) {
+    this(name, "unknown", age, false);  // Call constructor #1
 }
 ```
 
