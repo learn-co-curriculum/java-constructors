@@ -2,8 +2,12 @@
 
 ## Learning Goals
 
-- Explain constructors
-- Create constructors in Java
+- Define the Default Constructor
+- Define Constructor Parameter Naming Convention
+- Demonstrate Variable Shadowing 
+- Implement Multiple Constructors
+- Implement Constructor Chaining
+- Use IntelliJ to Generate A Constructor
 
 ## Introduction
 
@@ -325,7 +329,7 @@ public static void main(String[] args) {
 }
 ```
 
-We would need to explicitly add a no-args constructor  to the `Dog` class
+We must explicitly add a no-args constructor  to the `Dog` class
 to avoid the error.
 
 
@@ -364,6 +368,56 @@ public class Dog {
 
 }
 ```
+
+
+## IntelliJ Constructor Generation
+
+IntelliJ will generate a constructor based on the instance variables defined in the class.
+
+```java
+public class Vehicle {
+    private String id;
+    private String manufacturer;
+    private String style;
+    private int year;
+    private int mileage;
+    
+}
+```
+
+Given the `Vehicle` class shown above, right-click below the instance variables:
+
+![constructor step1](https://curriculum-content.s3.amazonaws.com/6676/java-methods/constructor_step1.png)
+
+Select "Constructor":
+
+![constructor step2](https://curriculum-content.s3.amazonaws.com/6676/java-methods/constructor_step2.png)
+
+Select the instance variables to include as constructor method parameters.
+For this example, we will select all of them:
+
+![constructor step3](https://curriculum-content.s3.amazonaws.com/6676/java-methods/constructor_step3.png)
+
+IntelliJ adds the constructor method to the class:
+
+```java
+public class Vehicle {
+    private String id;
+    private String manufacturer;
+    private String style;
+    private int year;
+    private int mileage;
+
+    public Vehicle(String id, String manufacturer, String style, int year, int mileage) {
+        this.id = id;
+        this.manufacturer = manufacturer;
+        this.style = style;
+        this.year = year;
+        this.mileage = mileage;
+    }
+}
+```
+
 
 
 ## Conclusion
