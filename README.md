@@ -347,16 +347,15 @@ public class Dog {
 
     // Constructor #1
     public Dog(String name, String breed, int age, boolean waggingTail) {
-        this(name, age); //calls Constructor #2
+        this.name = name;
+        this.breed = breed;
         this.age = age;
         this.waggingTail = waggingTail;
     }
 
     // Constructor #2
     public Dog(String name, int age) {
-        this.name = name;
-        this.age = age;
-        this.breed = "unknown";
+        this(name, "unknown", age, false);
     }
 
     public static void main(String[] args) {
